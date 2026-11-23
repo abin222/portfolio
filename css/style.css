@@ -1,0 +1,324 @@
+/* ==========================================================================
+   Abin Joseph — Portfolio Stylesheet
+   Dual Identity: Applied AI Engineer & Academic Researcher
+   Aesthetic: Clean, Editorial, Minimalist (Linear / Stripe / Academic)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-serif: 'Newsreader', Georgia, serif;
+
+  /* High-Contrast Light Mode (#FAFAFA base) */
+  --bg-page: #FAFAFA;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFFFF;
+  --bg-subtle: #F4F4F6;
+  --bg-muted: #EAEAEE;
+
+  --border-subtle: #E4E4E7;
+  --border-strong: #D4D4D8;
+  --border-active: #4F46E5;
+
+  --text-primary: #0A0A0C;
+  --text-secondary: #475569;
+  --text-tertiary: #64748B;
+  --text-muted: #94A3B8;
+
+  --accent-primary: #4F46E5;        /* Deep Indigo */
+  --accent-primary-hover: #4338CA;
+  --accent-primary-subtle: #EEF2FF;
+  --accent-primary-border: #C7D2FE;
+
+  --accent-research: #0D9488;       /* Teal/Emerald for Research */
+  --accent-research-subtle: #F0FDFA;
+  --accent-research-border: #99F6E4;
+
+  --accent-eng: #2563EB;            /* Blue for Engineering */
+  --accent-eng-subtle: #EFF6FF;
+  --accent-eng-border: #BFDBFE;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 24px -4px rgba(79, 70, 229, 0.15);
+
+  --grid-line: rgba(0, 0, 0, 0.04);
+}
+
+.dark {
+  /* High-Contrast Dark Mode (#0A0A0A base) */
+  --bg-page: #0A0A0B;
+  --bg-surface: #121215;
+  --bg-surface-elevated: #18181C;
+  --bg-subtle: #1C1C22;
+  --bg-muted: #272730;
+
+  --border-subtle: #24242C;
+  --border-strong: #33333F;
+  --border-active: #818CF8;
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-tertiary: #94A3B8;
+  --text-muted: #64748B;
+
+  --accent-primary: #6366F1;
+  --accent-primary-hover: #818CF8;
+  --accent-primary-subtle: rgba(99, 102, 241, 0.12);
+  --accent-primary-border: rgba(99, 102, 241, 0.35);
+
+  --accent-research: #2DD4BF;
+  --accent-research-subtle: rgba(45, 212, 191, 0.12);
+  --accent-research-border: rgba(45, 212, 191, 0.35);
+
+  --accent-eng: #60A5FA;
+  --accent-eng-subtle: rgba(96, 165, 250, 0.12);
+  --accent-eng-border: rgba(96, 165, 250, 0.35);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 28px -4px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 30px -4px rgba(99, 102, 241, 0.25);
+
+  --grid-line: rgba(255, 255, 255, 0.04);
+}
+
+/* Base resets & typography */
+html {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Background Subtle Grid Pattern */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-size: 24px 24px;
+  background-image: radial-gradient(circle, var(--grid-line) 1px, transparent 1px);
+}
+
+/* Glassmorphism Navigation */
+.nav-blur {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background-color: rgba(250, 250, 250, 0.85);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.dark .nav-blur {
+  background-color: rgba(10, 10, 11, 0.85);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Focus Mode Transitions */
+.card-transition {
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+/* Filter Dimming */
+.focus-dimmed {
+  opacity: 0.28 !important;
+  transform: scale(0.985);
+  filter: grayscale(40%);
+  pointer-events: none;
+}
+
+.focus-highlighted {
+  opacity: 1 !important;
+  transform: scale(1.005);
+  border-color: var(--accent-primary) !important;
+  box-shadow: var(--shadow-glow);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Focus Outline Accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Code Snippet & BibTeX Styling */
+pre code {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Card Hover Effects */
+.interactive-card {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.2s ease, 
+              border-color 0.2s ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+.dark .interactive-card:hover {
+  border-color: var(--border-strong);
+}
+
+/* Pulse indicator for online/active status */
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.6;
+  }
+}
+
+.pulse-indicator {
+  animation: pulse-subtle 2.5s infinite ease-in-out;
+}
+
+/* Modal Transition */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Toast Notifications */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast-success {
+  background-color: #064E3B;
+  color: #ECFDF5;
+  border: 1px solid #059669;
+}
+
+.dark .toast-success {
+  background-color: #064E3B;
+  color: #D1FAE5;
+  border: 1px solid #10B981;
+}
+
+/* Timeline Custom line */
+.timeline-stem {
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 20px;
+  width: 2px;
+  background-color: var(--border-subtle);
+}
+
+@media (min-width: 768px) {
+  .timeline-stem {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Print Stylesheet for clean 2-page CV export */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 11pt;
+  }
+
+  .no-print, nav, #toast-container, .focus-selector, button {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #000000 !important;
+  }
+
+  .interactive-card {
+    border: 1px solid #CCCCCC !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  section {
+    page-break-inside: avoid;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+}
